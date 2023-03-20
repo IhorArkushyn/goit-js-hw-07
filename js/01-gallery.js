@@ -1,8 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-const ulRef = document.querySelector(".gallery");
-
+const addGalleryMarcup = createGalleryMarkup(galleryItems);
 function createGalleryMarkup(items) {
   return items
     .map(
@@ -20,14 +19,14 @@ function createGalleryMarkup(items) {
     .join("");
 }
 
-const addGalleryMarcup = createGalleryMarkup(galleryItems);
+
 const galleryContainer = document.querySelector("ul.gallery");
 
-ulRef.insertAdjacentHTML("beforeend", addGalleryMarcup);
+galleryContainer.insertAdjacentHTML("beforeend", addGalleryMarcup);
 
-galleryContainer.addEventListener("click", onGalleryLinkClick);
+galleryContainer.addEventListener("click", onGalleryImageClick);
 
-function onGalleryLinkClick(event) {
+function onGalleryImageClick(event) {
   const isGalleryEl = event.target.classList.contains("gallery__image");
 
   event.preventDefault();
@@ -38,7 +37,7 @@ function onGalleryLinkClick(event) {
 
   const instance = basicLightbox.create(
     `
-		<img width="1400" height="900" src="${event.target.dataset.source}">
+		<img width="1280" src="${event.target.dataset.source}">
 	`
   );
   instance.show();
